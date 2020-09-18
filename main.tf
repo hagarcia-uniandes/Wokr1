@@ -1,33 +1,45 @@
 # Route53 module configuration. This module will create the necessary DNS records.
-module "r53" {
+module "route53" {
   source = "./modules/route53"
 
-  description = "DNS records zone for My Domain (mydomain.com)"
-  zone_name   = var.domain
-  records = {
-    names = [
-      "www.",
-    ]
-    types = [
-      "CNAME",
-    ]
-    ttls = [
-      "3600",
-    ]
-    values = [
-      "mydomain.com",
-    ]
-  }
+  application = var.project
+  environment = var.environment
+  #private_enabled = true
+  public_enabled = true
+  record_enabled = true
+
+  domain_name = var.domain
+  #vpc_id      = "vpc-xxxxxxxxxxxx"
+
+  #secondary_vpc_id     = "vpc-xxxxxxxxxxxxxx"
+  #secondary_vpc_region = "eu-west-1"
+
+  names = [
+    "www.",
+    "admin."
+  ]
+  types = [
+    "CNAME",
+    "CNAME"
+  ]
+  ttls = [
+    "3600",
+    "3600",
+  ]
+  values = [
+    "mydomain.com",
+    "mydomain.com",
+  ]
 
   # alias = {
   #   names = [
-  #     ""
-  #   ]
-  #   values = [
   #     "d130easdflja734js.cloudfront.net"
   #   ]
-  #   zones_id = [
+  #   zone_ids = [
   #     "Z2FDRFHATA1ER4"
+  #   ]
+  #   evaluate_target_healths = [
+  #     false
   #   ]
   # }
 }

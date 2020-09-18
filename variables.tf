@@ -6,9 +6,9 @@ variable "bucket_name" {
   description = "Bucket name"
   type        = string
 }
-# variable "project" {
-#   type = string
-# }
+variable "project" {
+  type = string
+}
 variable "environment" {
   type = string
 }
