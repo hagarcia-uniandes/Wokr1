@@ -44,10 +44,15 @@ module "route53" {
   # }
 }
 
-# s3 module configuration. This module will create a bucket.
-module "s3" {
+module "s3_bucket" {
   source = "./modules/s3"
-
-  create = true
   name   = var.bucket_name
+  application = var.project
+  environment = var.environment
+  #versioning                        = true
+  #acl                               = "private"
+  bucket_logging_encryption_enabled = true
+  sse_algorithm                     = var.sse
+  target_bucket                     = var.log_bucket
+  target_prefix                     = var.log_prefix
 }

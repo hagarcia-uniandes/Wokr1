@@ -15,6 +15,22 @@ variable "environment" {
 variable "aws_region" {
   type = string
 }
+variable "sse" {
+  description = "sse algorithm"
+  type        = string
+}
+variable "kms_s3" {
+  description = "The AWS KMS master key ID used for the SSE-KMS encryption."
+  type        = string
+}
+variable "log_bucket" {
+  description = "The name of the bucket that will receive the log objects."
+  type        = string  
+}
+variable "log_prefix" {
+  description = "To specify a key prefix for log objects."
+  type        = string  
+}
 # variable "ami_id" {
 #   type = list(string)
 # }
