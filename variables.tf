@@ -25,11 +25,34 @@ variable "kms_s3" {
 }
 variable "log_bucket" {
   description = "The name of the bucket that will receive the log objects."
-  type        = string  
+  type        = string
 }
 variable "log_prefix" {
   description = "To specify a key prefix for log objects."
-  type        = string  
+  type        = string
+}
+variable "subdomains" {
+  type = list(string)
+}
+variable "allowlist_ipv4" {
+  type    = list(string)
+  default = []
+}
+variable "allowlist_ipv6" {
+  type    = list(string)
+  default = []
+}
+variable "name" {
+  type = string
+}
+variable "root_domain" {
+  type = string
+}
+variable "acm_certificate_arn" {
+  type = string
+}
+variable "regional_domain_name" {
+  type = string
 }
 # variable "ami_id" {
 #   type = list(string)
